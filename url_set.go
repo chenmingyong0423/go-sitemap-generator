@@ -34,10 +34,19 @@ func (urlSet *UrlSet) GenerateXml(output string) error {
 
 //go:generate optioner -type URL -output url_set.go -mode append
 type URL struct {
-	Loc        string  `xml:"loc" opt:"-"`
-	LastMod    string  `xml:"lastmod,omitempty"`
-	ChangeFreq string  `xml:"changefreq,omitempty"`
-	Priority   float64 `xml:"priority,omitempty"`
+	Loc        string    `xml:"loc" opt:"-"`
+	LastMod    string    `xml:"lastmod,omitempty"`
+	ChangeFreq string    `xml:"changefreq,omitempty"`
+	Priority   float64   `xml:"priority,omitempty"`
+	Image      *UrlImage `xml:"image:image,omitempty"`
+}
+
+type UrlImage struct {
+	Ioc string `xml:"image:ioc"`
+}
+
+func NewUrlImage(ioc string) *UrlImage {
+	return &UrlImage{Ioc: ioc}
 }
 
 type URLOption func(*URL)
@@ -69,5 +78,11 @@ func WithChangeFreq(changeFreq string) URLOption {
 func WithPriority(priority float64) URLOption {
 	return func(uRL *URL) {
 		uRL.Priority = priority
+	}
+}
+
+func WithImage(image *UrlImage) URLOption {
+	return func(uRL *URL) {
+		uRL.Image = image
 	}
 }

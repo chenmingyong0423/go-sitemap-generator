@@ -15,10 +15,11 @@
 package sitemap
 
 import (
-	"github.com/stretchr/testify/require"
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestSitemap(t *testing.T) {
@@ -28,6 +29,7 @@ func TestSitemap(t *testing.T) {
 			WithLastMod("2024-05-17"),
 			WithChangeFreq("weekly"),
 			WithPriority(1.0),
+			WithImage(NewUrlImage("https://xxx.cn/posts/1.jpg")),
 		).
 		Url("https://xxx.cn/posts/2").Output("sitemap.xml").
 		GenerateXml()
@@ -40,6 +42,9 @@ func TestSitemap(t *testing.T) {
     <lastmod>2024-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
+    <image:image>
+      <image:ioc>https://xxx.cn/posts/1.jpg</image:ioc>
+    </image:image>
   </url>
   <url>
     <loc>https://xxx.cn/posts/2</loc>

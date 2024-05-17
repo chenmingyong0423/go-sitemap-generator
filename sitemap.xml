@@ -4,6 +4,9 @@
     <lastmod>2024-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
+    <image:image>
+      <image:ioc>https://xxx.cn/posts/1.jpg</image:ioc>
+    </image:image>
   </url>
   <url>
     <loc>https://xxx.cn/posts/2</loc>
