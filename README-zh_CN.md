@@ -9,16 +9,16 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/chenmingyong0423/go-sitemap-generator)](https://goreportcard.com/report/github.com/chenmingyong0423/go-sitemap-generator)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
-`go-sitemap-generator` A sitemap generator in Go. It can generate a sitemap in XML format.
+`go-sitemap-generator` 是一个用 Go 语言编写的 sitemap 生成器。它可以生成 XML 格式的 sitemap。
 
-English | [中文简体](./README-zh_CN.md)
+[English](./README.md) | 中文简体
 
-## Installation
+## 安装
 ```bash
 go get github.com/chenmingyong0423/go-sitemap-generator
 ```
 
-## Usage
+## 使用
 ```go
 err := NewSitemap().
     Url(
