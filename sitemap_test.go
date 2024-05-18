@@ -24,6 +24,7 @@ import (
 
 func TestSitemap(t *testing.T) {
 	err := NewSitemap().
+		XmlnsImage("https://www.google.com/schemas/sitemap-image/1.1").
 		Url(
 			"https://xxx.cn/posts/1",
 			WithLastMod("2024-05-17"),
@@ -36,7 +37,7 @@ func TestSitemap(t *testing.T) {
 	require.NoError(t, err)
 
 	result := `
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://xxx.cn/posts/1</loc>
     <lastmod>2024-05-17</lastmod>

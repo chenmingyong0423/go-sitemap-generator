@@ -10,9 +10,10 @@ import (
 )
 
 type UrlSet struct {
-	XMLName xml.Name `xml:"urlset"`
-	Xmlns   string   `xml:"xmlns,attr"`
-	Urls    []URL    `xml:"url"`
+	XMLName    xml.Name `xml:"urlset"`
+	Xmlns      string   `xml:"xmlns,attr"`
+	XmlnsImage string   `xml:"xmlns:image,attr"`
+	Urls       []URL    `xml:"url"`
 }
 
 func (urlSet *UrlSet) GenerateXml(output string) error {

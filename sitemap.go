@@ -19,6 +19,11 @@ func (s *Sitemap) Xmlns(value string) *Sitemap {
 	return s
 }
 
+func (s *Sitemap) XmlnsImage(value string) *Sitemap {
+	s.UrlSet.XmlnsImage = value
+	return s
+}
+
 func (s *Sitemap) Url(loc string, opts ...URLOption) *Sitemap {
 	s.UrlSet.Urls = append(s.UrlSet.Urls, *NewURL(loc, opts...))
 	return s
