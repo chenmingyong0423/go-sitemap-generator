@@ -6,7 +6,6 @@ package sitemap
 
 import (
 	"encoding/xml"
-	"os"
 )
 
 type UrlSet struct {
@@ -16,25 +15,8 @@ type UrlSet struct {
 	Urls       []URL    `xml:"url"`
 }
 
-func (urlSet *UrlSet) GenerateXml(output string) error {
-	// 创建文件
-	file, err := os.Create(output)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	// 写入文件
-	_, err = file.WriteString(xml.Header)
-	if err != nil {
-		return err
-	}
-	encoder := xml.NewEncoder(file)
-	encoder.Indent("", "  ")
-	if err = encoder.Encode(urlSet); err != nil {
-		return err
-	}
-	return nil
+func (urlSet *UrlSet) Marshal() ([]byte, error) {
+	return xml.MarshalIndent(urlSet, "", "  ")
 }
 
 //go:generate optioner -type URL -output url_set.go -mode append
@@ -47,11 +29,11 @@ type URL struct {
 }
 
 type UrlImage struct {
-	Ioc string `xml:"image:ioc"`
+	Loc string `xml:"image:loc"`
 }
 
 func NewUrlImage(ioc string) *UrlImage {
-	return &UrlImage{Ioc: ioc}
+	return &UrlImage{Loc: ioc}
 }
 
 type URLOption func(*URL)

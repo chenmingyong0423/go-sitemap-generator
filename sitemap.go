@@ -1,8 +1,14 @@
 package sitemap
 
+import (
+	"encoding/xml"
+	"os"
+)
+
 type Sitemap struct {
-	UrlSet UrlSet
-	output string
+	UrlSet     UrlSet
+	xmlContent []byte
+	output     string
 }
 
 // NewSitemap creates a new Sitemap
@@ -35,5 +41,30 @@ func (s *Sitemap) Output(value string) *Sitemap {
 }
 
 func (s *Sitemap) GenerateXml() error {
-	return s.UrlSet.GenerateXml(s.output)
+	// 创建文件
+	file, err := os.Create(s.output)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	// 写入文件
+	_, err = file.WriteString(xml.Header)
+	if err != nil {
+		return err
+	}
+
+	xmlContent := s.xmlContent
+	if len(xmlContent) == 0 {
+		xmlContent, err = s.UrlSet.Marshal()
+		if err != nil {
+			return err
+		}
+	}
+
+	_, err = file.Write(xmlContent)
+	if err != nil {
+		return err
+	}
+	return nil
 }

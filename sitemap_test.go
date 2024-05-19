@@ -45,7 +45,7 @@ func TestSitemap(t *testing.T) {
     <changefreq>weekly</changefreq>
     <priority>1</priority>
     <image:image>
-      <image:ioc>https://xxx.cn/posts/1.jpg</image:ioc>
+      <image:loc>https://xxx.cn/posts/1.jpg</image:loc>
     </image:image>
   </url>
   <url>
