@@ -37,6 +37,7 @@ func TestSitemap(t *testing.T) {
 	require.NoError(t, err)
 
 	result := `
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://xxx.cn/posts/1</loc>

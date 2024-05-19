@@ -25,6 +25,10 @@ func (urlSet *UrlSet) GenerateXml(output string) error {
 	defer file.Close()
 
 	// 写入文件
+	_, err = file.WriteString(xml.Header)
+	if err != nil {
+		return err
+	}
 	encoder := xml.NewEncoder(file)
 	encoder.Indent("", "  ")
 	if err = encoder.Encode(urlSet); err != nil {
