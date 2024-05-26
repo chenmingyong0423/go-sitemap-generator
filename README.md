@@ -20,7 +20,7 @@ go get github.com/chenmingyong0423/go-sitemap-generator
 
 ## Usage
 ```go
-err := NewSitemap().
+err := sitemap.NewSitemap().
     Url(
         "https://xxx.cn/posts/1",
         WithLastMod("2024-05-17"),
